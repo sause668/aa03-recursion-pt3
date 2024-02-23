@@ -20,11 +20,22 @@ fibonacci(10); // 55
 ***********************************************************************/
 
 function fibonacci(n) {
-  let ans = 0;
-  let start = 1
-  for (let i = 0; i < n; i++) {
-    ans = start + ans;
+  let ans = [];
+  let i = 2
+
+  if (n > 0) ans.push(1);
+  if (n > 1) ans.push(1);
+
+  let fib = () => {
+    if (ans.length < n) {
+      ans.push(ans[ans.length - 2] + ans[ans.length - 1])
+      fib();
+    } else return;
   }
+
+  fib();
+  console.log(ans)
+  return ans[ans.length - 1];
 }
   
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
